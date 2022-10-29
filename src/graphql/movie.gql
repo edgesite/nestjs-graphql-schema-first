@@ -1,0 +1,43 @@
+scalar JSON
+
+type Query {
+  movieDetail(id: Int!): MovieDetail
+  movie(id: Int!): Movie
+}
+
+type MovieDetail {
+  movie: Movie
+  recommends: [Movie]
+  cast: [MovieCast]
+}
+
+type MovieCast {
+  id: Int
+  name: String
+  character: String
+  moreMovies: [Movie]
+}
+
+enum MovieType {
+  SERIES
+  MOVIE
+}
+
+type Movie {
+  id: Int!
+  type: String!
+  title: String!
+  descr: String
+  image: String
+
+  tags: [String]!
+  metadata: JSON
+}
+
+type Episode {
+  id: Int!
+  index: Int!
+  title: String!
+  image: String
+  duration: Int
+}
